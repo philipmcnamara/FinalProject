@@ -10,15 +10,25 @@ const server = Hapi.server({
   host: 'localhost',
 });
 
+server.bind({
+  users: {},
+  projects: [],
+  currentUser: {},
+});
+
+
 async function init() {
   await server.register(Inert);
   await server.register(Vision);
   server.views({
     engines: {
-      hbs: Handlebars,
+      hbs: require('handlebars'),
     },
     relativeTo: __dirname,
     path: './app/views',
+    layoutPath: './app/views/layouts',
+    partialsPath: './app/views/partials',
+    layout: true,
     isCached: false,
   });
 
@@ -31,5 +41,7 @@ process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });
+
+
 
 init();

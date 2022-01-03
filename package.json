@@ -9,16 +9,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/hapi": "^20.2.1",
-    "@hapi/inert": "^6.0.4",
-    "@hapi/vision": "^6.1.0",
-    "handlebars": "^4.7.7"
+    "@hapi/hapi": "^20.1.0",
+    "@hapi/inert": "^6.0.3",
+    "@hapi/vision": "^6.0.1",
+    "handlebars": "^4.7.6"
   },
   "devDependencies": {
-    "prettier": "^2.5.1"
+    "prettier": "^2.2.1"
   },
   "prettier": {
-    "singleQuote": true,
     "printWidth": 120
   }
 }

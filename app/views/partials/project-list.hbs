@@ -1,0 +1,21 @@
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+    <table class="uk-table">
+        <caption>
+            Project Titles
+        </caption>
+        <thead>
+        <th>Title</th>
+        <th>Background</th>
+        <th>Project Owner</th>
+        </thead>
+        <tbody class="uk-text-left">
+        {{#each projects}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{background}}</td>
+                <td>{{owner.firstName}} {{owner.lastName}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
