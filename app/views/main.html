@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{title}}</title>
+    <title>Problem Solver</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
@@ -16,10 +16,49 @@
     <link rel="stylesheet" href="global.css" />
 </head>
 <body>
+<div class="uk-flex uk-flex-center uk-flex-middle uk-grid-small" uk-grid>
+    <div class="uk-width-2-3@m  uk-card uk-card-default uk-padding-small uk-visible@m">
+        <div class="uk-grid">
+            <div class="uk-width-1-6@m">
+                <img src="/images/logo.png" width="60" alt="img" />
+            </div>
+            <div class="uk-width-expand@m uk-text-left">
+                <div class="title">Digital Lean</div>
+                <div class="uk-text-muted uk-text-small">Sign up or Log in</div>
+            </div>
+            <div class="uk-card uk-card-small uk-text-center uk-padding-remove">
+                <a target="_blank" href="https://github.com/philipmcnamara/FinalProject">
+                    <div>
+                        <i class="fas fa-code fa-3x" style="color:rgb(0, 0, 0)" title="Git Repo" pos="bottom" uk-tooltip></i>
+                    </div>
+                    <div class="uk-width-expand@m uk-text-left">
+                        <div class="uk-text-muted uk-text-center" style="font-size:xx-small">Click for git repo</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul class="uk-iconnav uk-margin-left">
+            <a href="/signup" class="uk-card-hover uk-padding-small">
+                <i
+                        class="fas fa-user-cog fa-3x"
+                        style="color:darkslategrey"
+                        title="Sign up"
+                        pos="bottom"
+                        uk-tooltip
+                ></i>
+            </a>
+            <a href="/login" class="uk-card-hover uk-padding-small">
+                <i class="fas fa-user-edit fa-3x" style="color:darkblue" title="Log in" pos="bottom" uk-tooltip></i>
+            </a>
+        </ul>
+    </div>
+</div>
 <div class="uk-container uk-margin">
     <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
         <div class="uk-width-auto@m">
-            <img width="500" src="images/leanbanner.png" />
+            <img width="600" src="images/home.jpg" />
         </div>
         <div class="uk-width-expand@m">
             <h1 class="uk-heading-small">Digital-Lean</h1>
