@@ -1,17 +1,19 @@
+'use strict';
+
 const PS = {
   index: {
     handler: function (request, h) {
-      return h.file('./app/views/main.html');
+      return h.view('main', { title: 'Digital Lean' });
     },
   },
   signup: {
     handler: function (request, h) {
-      return h.file('./app/views/signup.html');
+      return h.view('signup', { title: 'Sign up for Access' });
     },
   },
   login: {
     handler: function (request, h) {
-      return h.file('./app/views/login.html');
+      return h.view('login', { title: 'Login for Access' });
     },
   },
 };
