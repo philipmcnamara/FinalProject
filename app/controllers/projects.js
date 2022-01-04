@@ -18,7 +18,8 @@ const Projects = {
     handler: function (request, h) {
       try {
         let data = request.payload;
-        data.owner = this.currentUser;
+        var ownerEmail = request.auth.credentials.id;
+        data.owner = this.users[ownerEmail];
         this.projects.push(data);
         return h.redirect("/report");
       }

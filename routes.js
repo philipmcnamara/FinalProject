@@ -20,8 +20,9 @@ module.exports = [
     path: "/{param*}",
     handler: {
       directory: {
-        path: "./public",
-      },
+        path: "./public"
+      }
     },
-  },
+    options: { auth: false }
+  }
 ];
