@@ -1,0 +1,46 @@
+{
+  "ProjectService": "http://localhost:3000",
+
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "test"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "test"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "test"
+    }
+  ],
+  "newUser": {
+    "firstName": "Maggie",
+    "lastName": "Simpson",
+    "email": "maggie@simpson.com",
+    "password": "test"
+  },
+
+
+  "projects": [
+    {
+      "title": "Project 1",
+      "background": "Broken stuff"
+    },
+    {
+      "title": "Project 2",
+      "background": "Very Broken stuff"
+    }
+  ],
+  "newPOI": {
+    "title": "Project 3",
+    "background": "Fixed stuff"
+  }
+}
