@@ -11,9 +11,13 @@
         <tbody class="uk-text-left">
         {{#each projects}}
             <tr>
-                <td>{{title}}</td>
-                <td>{{background}}</td>
-                <td>{{owner.firstName}} {{owner.lastName}}</td>
+                <form action="/displayProject" method="POST">
+                    <td>{{title}}</td>
+                    <td>{{background}}</td>
+                    <td>{{owner.firstName}} {{owner.lastName}}</td>
+                    <input type="hidden" value={{_id}} name="id" />
+                    <td><button type="submit"  class="uk-button uk-button-primary uk-button-large uk-width-1-1">View</button></td>
+                </form>
             </tr>
         {{/each}}
         </tbody>

@@ -42,10 +42,10 @@ const Projects = {
     handler: async function(request, h) {
       try {
         console.log("test showproject");
-        //  const poi = await Project.findById(id).lean();
+        //  const project = await Project.findById(id).lean();
         console.log("test 1");
         //console.log(id,project);
-        return h.view("displayProject", { title: "Testing",});
+        return h.view("displayProject", { title: title,});
       }
       catch (err) {
         return h.view("login", { errors: [{ message: err.message }] });
@@ -79,7 +79,7 @@ const Projects = {
         const project = await Project.findById(id);
         const title = project.title;
         const background = project.background;
-        return h.view("displayProject", { title: "Testing", id: id, background: background,  });
+        return h.view("displayProject", { title: title, id: id, background: background,  });
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
@@ -98,7 +98,7 @@ const Projects = {
       },
       failAction: function (request, h, error) {
         return h
-          .view("displayPOI", {
+          .view("displayProject", {
             title: "Sign up error",
             errors: error.details,
           })
@@ -112,20 +112,20 @@ const Projects = {
         const id = collection.id
         const title = collection.title;
         const background = collection.background;
-        const record = await POI.findById(id);
+        const record = await Project.findById(id);
         console.log("Title: "+collection.title);
         record.title = title;
         record.background = background;
         await record.save();
-        return h.view("displayProject", { title: "Testing", id: id, background: background,  });
-        // return h.redirect("/displayPOI",{id:id});
+        return h.view("displayProject", { title: title, id: id, background: background,  });
+        // return h.redirect("/displayProject",{id:id});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
     },
   },
 
-  deletePOI: {
+  deleteProject: {
     validate: {
       payload: {
         title: Joi.string().required(),
@@ -137,7 +137,7 @@ const Projects = {
       },
       failAction: function (request, h, error) {
         return h
-          .view("displayPOI", {
+          .view("displayProject", {
             title: "Sign up error",
             errors: error.details,
           })
@@ -157,9 +157,9 @@ const Projects = {
         record.title = title;
         record.background = background;
         await record.delete();
-        return h.view("displayProject", { title: "Testing", id: id, background: background,  });
+        return h.view("home", { title: title, id: id, background: background,  });
       } catch (err) {
-        return h.view("main", { errors: [{ message: err.message }] });
+        return h.view("home", { errors: [{ message: err.message }] });
       }
     },
   },

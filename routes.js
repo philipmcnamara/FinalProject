@@ -20,6 +20,10 @@ module.exports = [
   { method: "GET", path: "/addProject", config: Accounts.showProject },
   { method: 'POST', path: '/addProject', config: Accounts.Project },
 
+  { method: 'POST', path:"/displayProject", config: Projects.Project },
+  { method: 'POST', path:"/displayUpdatedProject", config: Projects.UpdateProject },
+  { method: "POST", path: "/displayDeletedProject", config: Projects.deleteProject},
+
   {
     method: "GET",
     path: "/{param*}",
