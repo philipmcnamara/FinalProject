@@ -17,6 +17,9 @@ module.exports = [
   { method: "POST", path: "/project", config: Projects.project },
   { method: "GET", path: "/report", config: Projects.report },
 
+  { method: "GET", path: "/addProject", config: Accounts.showProject },
+  { method: 'POST', path: '/addProject', config: Accounts.Project },
+
   {
     method: "GET",
     path: "/{param*}",
