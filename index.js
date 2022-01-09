@@ -8,7 +8,6 @@ const Cookie = require("@hapi/cookie");
 const Joi = require("@hapi/joi");
 require("./app/models/db");
 const env = require("dotenv");
-
 const dotenv = require("dotenv");
 
 const result = dotenv.config();
@@ -26,6 +25,10 @@ async function init() {
   await server.register(Vision);
   await server.register(Cookie);
   server.validator(require("@hapi/joi"));
+  server.route(require("./routes-api"));
+
+
+
   server.views({
     engines: {
       hbs: require("handlebars"),
