@@ -99,7 +99,7 @@ const Accounts = {
           const message = "Email address is not registered";
           throw Boom.unauthorized(message);
         }
-        await user.comparePassword(password);
+        await user.comparePassword(password);           // EDITED
         request.cookieAuth.set({ id: user.id });
         return h.redirect("/home");
       } catch (err) {
