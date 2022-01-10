@@ -37,11 +37,17 @@ const Projects = {
       }
     }
   },
+
   defSubmit: {
     handler: async function (request, h) {
       try {
+        const id = request.auth.credentials.id;
+        const user = await User.findById(id);
         const data = request.payload;
         const newProject = new Project({
+          title: data.title,
+          background: data.background,
+          owner: user._id,
           problemDefinition: data.problemDefinition,
         });
         await newProject.save();
@@ -51,7 +57,31 @@ const Projects = {
       }
     }
   },
-
+  probDefButton: {
+    handler: async function(request, h) {
+      try {
+        const id = request.auth.credentials.id;
+        const user = await User.findById(id);
+        const data = request.payload;
+        const newProject = new Project({
+          title: data.title,
+          background: data.background,
+          owner: user._id,
+          problemDefinition: data.problemDefinition,
+          goals: data.goals,
+        });
+        await newProject.save();
+        const projects = await Project.find().populate("owner").lean();
+        return h.view("projectDef", {
+          title: "Projects to Date",
+          projects: projects,
+        });
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+  /*
   probDefButton: {
     handler: async function(request, h) {
       const projects = await Project.find().populate("owner").lean();
@@ -61,6 +91,9 @@ const Projects = {
       });
     },
   },
+
+   */
+
 
 
   showProject: {
