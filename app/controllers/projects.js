@@ -28,7 +28,7 @@ const Projects = {
       const newProject = new Project({
         title: data.title,
         background: data.background,
-        owner: user._id
+        owner: user._id,
       });
       await newProject.save();
         return h.redirect("/report");
@@ -37,6 +37,31 @@ const Projects = {
       }
     }
   },
+  defSubmit: {
+    handler: async function (request, h) {
+      try {
+        const data = request.payload;
+        const newProject = new Project({
+          problemDefinition: data.problemDefinition,
+        });
+        await newProject.save();
+        return h.redirect("/report");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    }
+  },
+
+  probDefButton: {
+    handler: async function(request, h) {
+      const projects = await Project.find().populate("owner").lean();
+      return h.view("projectDef", {
+        title: "Projects to Date",
+        projects: projects,
+      });
+    },
+  },
+
 
   showProject: {
     handler: async function(request, h) {
@@ -79,7 +104,9 @@ const Projects = {
         const project = await Project.findById(id);
         const title = project.title;
         const background = project.background;
-        return h.view("displayProject", { title: title, id: id, background: background,  });
+        const problemDefinition = project.problemDefinition;
+        const goals = project.goals;
+        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals });
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
@@ -112,12 +139,14 @@ const Projects = {
         const id = collection.id
         const title = collection.title;
         const background = collection.background;
+        const problemDefinition = collection.problemDefinition;
+        const goals = collection.goals;
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
         record.title = title;
         record.background = background;
         await record.save();
-        return h.view("displayProject", { title: title, id: id, background: background,  });
+        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals });
         // return h.redirect("/displayProject",{id:id});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
@@ -151,13 +180,15 @@ const Projects = {
         const id = collection.id
         const title = collection.title;
         const background = collection.background;
+        const problemDefinition = collection.problemDefinition;
+        const goals = collection.goals;
         console.log("test Project update "+id);
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
         record.title = title;
         record.background = background;
         await record.delete();
-        return h.view("home", { title: title, id: id, background: background,  });
+        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals   });
       } catch (err) {
         return h.view("home", { errors: [{ message: err.message }] });
       }

@@ -23,6 +23,10 @@ module.exports = [
   { method: 'POST', path:"/displayProject", config: Projects.Project },
   { method: 'POST', path:"/displayUpdatedProject", config: Projects.UpdateProject },
   { method: "POST", path: "/displayDeletedProject", config: Projects.deleteProject},
+  { method: "POST", path: '/probDefButton', config: Projects.probDefButton},
+  { method: "POST", path: '/defSubmit', config: Projects.defSubmit},
+
+
 
   {
     method: "GET",
