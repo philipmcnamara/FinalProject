@@ -1,6 +1,6 @@
 <form action="/displayUpdatedProject" method="POST">
     <div class="uk-margin">
-        <div class="uk-inline uk-width-1-1">
+        <div class="uk-width-expand">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <h4>Title</h4>
             <input class="uk-input uk-form-large" type="text" name="title" value="{{title}}">
@@ -18,23 +18,23 @@
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <h4>Goals</h4>
-            <input class="uk-input uk-form-large" type="text" name="problemDefinition" value="{{goals}}">
+            <input class="uk-input uk-form-large" type="text" name="goals" value="{{goals}}">
             <input type="hidden" value="{{id}}" name="id"/>
         </div>
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <h4>Root Cause</h4>
-            <input class="uk-input uk-form-large" type="text" name="problemDefinition" value="{{rootCause}}">
+            <input class="uk-input uk-form-large" type="text" name="rootCause" value="{{rootCause}}">
         </div>
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <h4>Action Plan</h4>
-            <input class="uk-input uk-form-large" type="text" name="problemDefinition" value="{{actionPlan}}">
+            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan}}">
         </div>
         <div class="uk-margin">
             <div class="uk-inline uk-width-1-1">
                 <span class="uk-form-icon" uk-icon="icon: update"></span>
-                <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Update Project</button>
+                <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-3 uk-align-center">Update Project</button>
                 <br>
             </div>
         </div>
@@ -44,9 +44,9 @@
 
 <form action="/displayDeletedProject" method="POST">
     <div class="uk-margin">
-        <div class="uk-inline uk-width-1-1">
+        <div class="uk-width-expand">
             <span class="uk-form-icon" uk-icon="icon: delete"></span>
-            <button type="submit"  class="uk-button-danger	 uk-button-large uk-width-1-1">Remove Project</button></div></div>
+            <button type="submit"  class="uk-button-danger	 uk-button-large uk-width-1-3 uk-align-center">Remove Project</button></div></div>
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon" uk-icon="icon: foo"></span>
         <input class="uk-input uk-form-large uk-hidden" type="text" name="title" value="{{title}}">
@@ -57,7 +57,7 @@
     </div>
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon" uk-icon="icon: empty"></span>
-        <input class="uk-input uk-form-large uk-hidden" type="text" name="problemDefinition" value="{{goals}}">
+        <input class="uk-input uk-form-large uk-hidden" type="text" name="goals" value="{{goals}}">
     </div>
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
@@ -67,11 +67,11 @@
         <input type="hidden" value="{{id}}" name="id"/>
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon" uk-icon="icon: empty"></span>
-        <input class="uk-input uk-form-large" type="text" name="problemDefinition" value="{{rootCause}}">
+        <input class="uk-input uk-form-large uk-hidden" type="text" name="rootCause" value="{{rootCause}}">
     </div>
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon" uk-icon="icon: empty"></span>
-        <input class="uk-input uk-form-large" type="text" name="problemDefinition" value="{{actionPlan}}">
+        <input class="uk-input uk-form-large uk-hidden" type="text" name="actionPlan" value="{{actionPlan}}">
     </div>
     </div>
 

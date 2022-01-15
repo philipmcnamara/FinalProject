@@ -31,6 +31,8 @@ const Projects = {
         owner: user._id,
         problemDefinition: data.problemDefinition,
         goals: data.goals,
+        rootCause: data.rootCause,
+        actionPlan: data.actionPlan
       });
       await newProject.save();
         return h.redirect("/report");
@@ -84,7 +86,9 @@ const Projects = {
         const background = project.background;
         const problemDefinition = project.problemDefinition;
         const goals = project.goals;
-        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals });
+        const rootCause = project.rootCause;
+        const actionPlan = project.actionPlan;
+        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause,  actionPlan: actionPlan});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
@@ -99,6 +103,8 @@ const Projects = {
         problemDefinition: Joi.string().required(),
         goals: Joi.string().required(),
         id: Joi.string().required(),
+        rootCause: Joi.string().required(),
+        actionPlan: Joi.string().required(),
       },
       options: {
         abortEarly: false,
@@ -120,14 +126,18 @@ const Projects = {
         const background = collection.background;
         const problemDefinition = collection.problemDefinition;
         const goals = collection.goals;
+        const rootCause = collection.rootCause;
+        const actionPlan = collection.actionPlan;
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
         record.title = title;
         record.background = background;
         record.problemDefinition = problemDefinition;
         record.goals = goals;
+        record.rootCause = rootCause;
+        record.actionPlan = actionPlan;
         await record.save();
-        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals });
+        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause,  actionPlan: actionPlan });
         // return h.redirect("/displayProject",{id:id});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
@@ -141,6 +151,10 @@ const Projects = {
         title: Joi.string().required(),
         background: Joi.string().required(),
         id: Joi.string().required(),
+        problemDefinition: Joi.string().required(),
+        goals: Joi.string().required(),
+        rootCause: Joi.string().required(),
+        actionPlan: Joi.string().required(),
       },
       options: {
         abortEarly: false,
@@ -163,13 +177,15 @@ const Projects = {
         const background = collection.background;
         const problemDefinition = collection.problemDefinition;
         const goals = collection.goals;
+        const rootCause = collection.rootCause;
+        const actionPlan = collection.actionPlan;
         console.log("test Project update "+id);
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
         record.title = title;
         record.background = background;
         await record.delete();
-        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals   });
+        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals , rootCause: rootCause,  actionPlan: actionPlan });
       } catch (err) {
         return h.view("home", { errors: [{ message: err.message }] });
       }

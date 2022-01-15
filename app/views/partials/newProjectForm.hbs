@@ -129,11 +129,6 @@
     let currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
 
-    const Project = require("../models/project");
-    const User = require("../models/user");
-    const Joi = require("@hapi/joi");
-    const Boom = require("@hapi/boom");
-
     function showTab(n) {
         // This function will display the specified tab of the form...
         let x = document.getElementsByClassName("tab");
@@ -155,11 +150,10 @@
         fixStepIndicator(n)
     }
 
-
-
+    // what happen when the submitt button is clicked
     function myFunction() {
         document.getElementById("regForm").submit();
-        alert("The form was submitted");
+        alert("The Project was submitted");
     }
 
     function nextPrev(n) {

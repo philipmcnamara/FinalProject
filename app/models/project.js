@@ -12,8 +12,8 @@ const projectSchema = new Schema({
   },
   problemDefinition: String,
   goals: String,
-  rootCause: Array(),
-  actionPlan: Array(),
+  rootCause: String,
+  actionPlan: String,
   status: Boolean,
 });
 
