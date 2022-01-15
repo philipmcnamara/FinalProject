@@ -29,6 +29,8 @@ const Projects = {
         title: data.title,
         background: data.background,
         owner: user._id,
+        problemDefinition: data.problemDefinition,
+        goals: data.goals,
       });
       await newProject.save();
         return h.redirect("/report");
@@ -151,6 +153,8 @@ const Projects = {
       payload: {
         title: Joi.string().required(),
         background: Joi.string().required(),
+        problemDefinition: Joi.string().required(),
+        goals: Joi.string().required(),
         id: Joi.string().required(),
       },
       options: {
@@ -159,7 +163,6 @@ const Projects = {
       failAction: function (request, h, error) {
         return h
           .view("displayProject", {
-            title: "Sign up error",
             errors: error.details,
           })
           .takeover()
@@ -178,6 +181,8 @@ const Projects = {
         console.log("Title: "+collection.title);
         record.title = title;
         record.background = background;
+        record.problemDefinition = problemDefinition;
+        record.goals = goals;
         await record.save();
         return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals });
         // return h.redirect("/displayProject",{id:id});
