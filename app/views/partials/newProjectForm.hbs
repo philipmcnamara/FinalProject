@@ -100,12 +100,85 @@
     <div class="tab"><h4>Goals</h4>
         <p><input placeholder="What specific outcomes are required?" oninput="this.className = ''" name="goals"></p>
     </div>
-    <div class="tab"><h4>Root Causes</h4>
-        <p><input placeholder="What is the root cause of the problem?" oninput="this.className = ''" name="rootCause"></p>
-    </div>
+
     <div class="tab"><h4>Action Plan</h4>
-        <p><input placeholder="What activity is required to reach the target?" oninput="this.className = ''" name="actionPlan"></p>
+
+        <body>
+ <input type="hidden" name="id" id="id" /><br/><br/>
+        Issue: <input type="text" name="issue" id="issue" /><br/><br/>
+        Action: <input type="text" name="action" id="action" /><br/><br/>
+        Who: <input type="text" name="who" id="who" /><br/><br/>
+        <label for="when">When:</label>
+        <input type="date" id="when" name="when"><br/><br/>
+        <label for="status">Action Status:</label>
+        <select name="status" id="status">
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option>
+        </select><br/><br/><br/><br/>
+
+        <button type="button" onclick="addRow()">Add Row</button>
+
+        <br/><br/>
+
+        <table border="1">
+            <tr>
+                <th>Issue</th>
+                <th>Action</th>
+                <th>Who</th>
+                <th>When</th>
+                <th>Status</th>
+                <th>ID</th>
+            </tr>
+            <tr>
+                <td>bad milk</td>
+                <td>call driver</td>
+                <td>grace</td>
+                <td>16-01-2022</td>
+                <td>Open</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>open coffee bags</td>
+                <td>get clothes-pegs</td>
+                <td>philip</td>
+                <td>18-01-2022</td>
+                <td>Closed</td>
+                <td>2</td>
+            </tr>
+        </table>
+        </body>
     </div>
+
+    <div class="tab"><h4>Root Causes</h4>
+
+        <h5>Man</h5>
+        <p><input placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
+        <p><input placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
+        <p><input placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
+        <h5>Machine</h5>
+        <p><input placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
+        <p><input placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
+        <p><input placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
+        <h5>Method</h5>
+        <p><input placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
+        <p><input placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
+        <p><input placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
+        <h5>Environment</h5>
+        <p><input placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
+        <p><input placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
+        <p><input placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
+        <h5>Measure</h5>
+        <p><input placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
+        <p><input placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
+        <p><input placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
+        <h5>Material</h5>
+        <p><input placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
+        <p><input placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
+        <p><input placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
+    </div>
+
+
+
     <div style="overflow:auto;">
         <div style="float:right;">
             <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
@@ -205,6 +278,47 @@
         }
         //... and adds the "active" class on the current step:
         x[n].className += " active";
+    }
+
+    function addRow()
+    {
+
+
+
+        // get input values
+        let issue = document.getElementById('issue').value;
+        let action = document.getElementById('action').value;
+        let who = document.getElementById('who').value;
+        let when = document.getElementById('when').value;
+        let status = document.getElementById('status').value;
+
+
+        // get the html table
+        // 0 = the first table
+        let table = document.getElementsByTagName('table')[0];
+        let id = table.rows.length
+
+        // add new empty row to the table
+        // 0 = in the top
+        // table.rows.length = the end
+        let newRow = table.insertRow(table.rows.length);
+
+        // add cells to the row
+        let cel1 = newRow.insertCell(0);
+        let cel2 = newRow.insertCell(1);
+        let cel3 = newRow.insertCell(2);
+        let cel4 = newRow.insertCell(3);
+        let cel5 = newRow.insertCell(4);
+        let cel6 = newRow.insertCell(5);
+
+        // add values to the cells
+        cel1.innerHTML = issue;
+        cel2.innerHTML = action;
+        cel3.innerHTML = who;
+        cel4.innerHTML = when;
+        cel5.innerHTML = status;
+        cel6.innerHTML = id;
+        return false;
     }
 </script>
 

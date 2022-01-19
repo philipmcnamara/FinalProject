@@ -32,6 +32,12 @@ const Projects = {
         problemDefinition: data.problemDefinition,
         goals: data.goals,
         rootCause: data.rootCause,
+        man: data.man,
+        method: data.method,
+        machine: data.machine,
+        environment: data.environment,
+        measurement: data.measurement,
+        material: data.material,
         actionPlan: data.actionPlan
       });
       await newProject.save();
@@ -87,8 +93,9 @@ const Projects = {
         const problemDefinition = project.problemDefinition;
         const goals = project.goals;
         const rootCause = project.rootCause;
+        const man = project.man;
         const actionPlan = project.actionPlan;
-        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause,  actionPlan: actionPlan});
+        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause, man: man,  actionPlan: actionPlan});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
@@ -137,7 +144,7 @@ const Projects = {
         record.rootCause = rootCause;
         record.actionPlan = actionPlan;
         await record.save();
-        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause,  actionPlan: actionPlan });
+        return h.view("report", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause,  actionPlan: actionPlan });
         // return h.redirect("/displayProject",{id:id});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });

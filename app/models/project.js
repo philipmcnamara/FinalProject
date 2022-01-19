@@ -3,6 +3,8 @@
 const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
 
+let table = [[],[],[],[],[],[],]
+
 const projectSchema = new Schema({
   title: String,
   background: String,
@@ -12,8 +14,13 @@ const projectSchema = new Schema({
   },
   problemDefinition: String,
   goals: String,
-  rootCause: String,
-  actionPlan: String,
+  man: [],
+  machine: [],
+  method : [],
+  environment : [],
+  measurement : [],
+  material : [],
+  actionPlan: [[],[],],
   status: Boolean,
 });
 
