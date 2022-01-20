@@ -101,54 +101,6 @@
         <p><input placeholder="What specific outcomes are required?" oninput="this.className = ''" name="goals"></p>
     </div>
 
-    <div class="tab"><h4>Action Plan</h4>
-
-        <body>
- <input type="hidden" name="id" id="id" /><br/><br/>
-        Issue: <input type="text" name="issue" id="issue" /><br/><br/>
-        Action: <input type="text" name="action" id="action" /><br/><br/>
-        Who: <input type="text" name="who" id="who" /><br/><br/>
-        <label for="when">When:</label>
-        <input type="date" id="when" name="when"><br/><br/>
-        <label for="status">Action Status:</label>
-        <select name="status" id="status">
-            <option value="Open">Open</option>
-            <option value="Closed">Closed</option>
-        </select><br/><br/><br/><br/>
-
-        <button type="button" onclick="addRow()">Add Row</button>
-
-        <br/><br/>
-
-        <table border="1">
-            <tr>
-                <th>Issue</th>
-                <th>Action</th>
-                <th>Who</th>
-                <th>When</th>
-                <th>Status</th>
-                <th>ID</th>
-            </tr>
-            <tr>
-                <td>bad milk</td>
-                <td>call driver</td>
-                <td>grace</td>
-                <td>16-01-2022</td>
-                <td>Open</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>open coffee bags</td>
-                <td>get clothes-pegs</td>
-                <td>philip</td>
-                <td>18-01-2022</td>
-                <td>Closed</td>
-                <td>2</td>
-            </tr>
-        </table>
-        </body>
-    </div>
-
     <div class="tab"><h4>Root Causes</h4>
 
         <h5>Man</h5>
@@ -178,6 +130,58 @@
     </div>
 
 
+    <div class="tab"><h4>Action Plan</h4>
+
+        <body>
+
+        <p><input type="hidden" id="id" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="actionPlan"></p>
+        <h5>Issue:</h5>
+        <p><input id="issue" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="actionPlan"></p>
+        <h5>Action:</h5>
+        <p><input id="action" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="actionPlan"></p>
+        <h5>Who:</h5>
+        <p><input id="who" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="actionPlan"></p>
+
+        <label for="when">When:</label>
+        <input type="date" id="when" name="when"><br/><br/>
+        <label for="status">Action Status:</label>
+        <select name="status" id="status">
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option>
+        </select><br/><br/><br/><br/>
+
+        <button type="button" onclick="addRow()">Add Row</button>
+
+        <br/><br/>
+
+        <table id="actionTable" border="1">
+            <tr>
+                <th>Issue</th>
+                <th>Action</th>
+                <th>Who</th>
+                <th>When</th>
+                <th>Status</th>
+                <th>ID</th>
+            </tr>
+            <tr>
+                <td>bad milk</td>
+                <td>call driver</td>
+                <td>grace</td>
+                <td>16-01-2022</td>
+                <td>Open</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>open coffee bags</td>
+                <td>get clothes-pegs</td>
+                <td>philip</td>
+                <td>18-01-2022</td>
+                <td>Closed</td>
+                <td>2</td>
+            </tr>
+        </table>
+        </body>
+    </div>
 
     <div style="overflow:auto;">
         <div style="float:right;">
@@ -283,15 +287,12 @@
     function addRow()
     {
 
-
-
         // get input values
         let issue = document.getElementById('issue').value;
         let action = document.getElementById('action').value;
         let who = document.getElementById('who').value;
         let when = document.getElementById('when').value;
         let status = document.getElementById('status').value;
-
 
         // get the html table
         // 0 = the first table
@@ -318,6 +319,8 @@
         cel4.innerHTML = when;
         cel5.innerHTML = status;
         cel6.innerHTML = id;
+
+        document.getElementsByTagName('table')[0].submit();
         return false;
     }
 </script>

@@ -20,7 +20,7 @@ const projectSchema = new Schema({
   environment : [],
   measurement : [],
   material : [],
-  actionPlan: [[],[],],
+  actionPlan: [],
   status: Boolean,
 });
 
