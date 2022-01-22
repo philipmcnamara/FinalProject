@@ -3,7 +3,6 @@
 const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
 
-
 const projectSchema = new Schema({
   title: String,
   background: String,
@@ -19,8 +18,9 @@ const projectSchema = new Schema({
   environment : [],
   measurement : [],
   material : [],
-  actionPlan: [],
-  status: Boolean,
+  actionPlan: []
+
+  //status: Boolean,
 });
 
 module.exports = Mongoose.model("Project", projectSchema);

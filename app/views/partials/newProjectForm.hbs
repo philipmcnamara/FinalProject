@@ -91,43 +91,44 @@
     <h1>New Project:</h1>
     <!-- One "tab" for each step in the form: -->
     <div class="tab"><h4>Title</h4>
-        <p><input placeholder="Pick a Title for your Project" oninput="this.className = ''" name="title"></p>
+        <p><input placeholder="Pick a Title for your Project"  name="title"></p>
         <h4>Background</h4>
-        <p><input placeholder="Why are we talking about it?" oninput="this.className = ''" name="background"></p>
+        <p><input placeholder="Why are we talking about it?"  name="background"></p>
     </div>
     <div class="tab"><h4>Problem Definition</h4>
-        <p><input placeholder="Where do things stand today/What is the problem?" oninput="this.className = ''" name="problemDefinition"></p>
+        <p><input placeholder="Where do things stand today/What is the problem?" name="problemDefinition"></p>
     </div>
     <div class="tab"><h4>Goals</h4>
-        <p><input placeholder="What specific outcomes are required?" oninput="this.className = ''" name="goals"></p>
+        <p><input placeholder="What specific outcomes are required?"  name="goals"></p>
     </div>
 
     <div class="tab"><h4>Root Causes</h4>
 
         <h5>Man</h5>
-        <p><input value = "test" placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
-        <p><input value = "test" placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
-        <p><input value = "test" placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
+        <p><input id = "man" value = " " placeholder="How might a user create this issue?"  name="man"></p>
+        <p><input id = "man" value = "test" placeholder="How might a user create this issue?"  name="man"></p>
+        <p><input id = "man" value = "test" placeholder="How might a user create this issue?"  name="man"></p>
+
         <h5>Machine</h5>
-        <p><input value = "test" placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
-        <p><input value = "test" placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
-        <p><input value = "test" placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
+        <p><input value = "test" placeholder="What machines involved might be a cause for concern?"  name="machine"></p>
+        <p><input value = "test" placeholder="What machines involved might be a cause for concern?"  name="machine"></p>
+        <p><input value = "test" placeholder="What machines involved might be a cause for concern?" name="machine"></p>
         <h5>Method</h5>
-        <p><input value = "test" placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
-        <p><input value = "test" placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
-        <p><input value = "test" placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
+        <p><input value = "test" placeholder="Would a different approach remove the issue?"  name="method"></p>
+        <p><input value = "test" placeholder="Would a different approach remove the issue?" name="method"></p>
+        <p><input value = "test" placeholder="Would a different approach remove the issue?" name="method"></p>
         <h5>Environment</h5>
-        <p><input value = "test" placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
-        <p><input value = "test" placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
-        <p><input value = "test" placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
+        <p><input value = "test" placeholder="Is there an issue with our set up?"  name="environment"></p>
+        <p><input value = "test" placeholder="Is there an issue with our set up?" name="environment"></p>
+        <p><input value = "test" placeholder="Is there an issue with our set up?"  name="environment"></p>
         <h5>Measure</h5>
-        <p><input value = "test" placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
-        <p><input value = "test" placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
-        <p><input value = "test" placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
+        <p><input value = "test" placeholder="What indicators are present in the issue?"  name="measurement"></p>
+        <p><input value = "test" placeholder="What indicators are present in the issue?"  name="measurement"></p>
+        <p><input value = "test" placeholder="What indicators are present in the issue?" name="measurement"></p>
         <h5>Material</h5>
-        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
-        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
-        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
+        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
+        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
+        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
     </div>
 
 
@@ -137,14 +138,14 @@
         <!-- takes input and adds it to my variables & also the display table -->
         <p><input type="hidden" id="id" placeholder="Can material variation or loss cause a negative change?" ></p>
         <h5>Issue:</h5>
-        <p><input  id="issue" placeholder="Can material variation or loss cause a negative change?" ></p>
+        <p><input required id="issue" placeholder="Can material variation or loss cause a negative change?" ></p>
         <h5>Action:</h5>
-        <p><input id="action" placeholder="Can material variation or loss cause a negative change?" ></p>
+        <p><input required id="action" placeholder="Can material variation or loss cause a negative change?" ></p>
         <h5>Who:</h5>
-        <p><input id="who" placeholder="Can material variation or loss cause a negative change?" ></p>
+        <p><input required id="who" placeholder="Can material variation or loss cause a negative change?" ></p>
 
         <label for="when">When:</label>
-        <input type="date" id="when" name="when"><br/><br/>
+        <input required type="date" id="when" name="when"><br/><br/>
         <label for="status">Action Status:</label>
         <select name="status" id="status">
             <option value="Open">Open</option>
@@ -213,6 +214,8 @@
     let currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
 
+
+
     // global variables for my actionPlan array srt up
     const idRow = [];
     const issueRow = [];
@@ -220,6 +223,7 @@
     const whoRow = [];
     const whenRow = [];
     const statusRow = [];
+
     //const allRows = [[idRow], [issueRow], [actionRow], [whoRow], [whenRow],[statusRow]]
 
     function showTab(n) {
@@ -270,7 +274,7 @@
 
     function validateForm() {
         // This function deals with validation of the form fields
-        let x, y, i, valid = true;
+      /*  let x, y, i, valid = true;
         x = document.getElementsByClassName("tab");
         y = x[currentTab].getElementsByTagName("input");
         // A loop that checks every input field in the current tab:
@@ -284,10 +288,10 @@
             }
         }
         // If the valid status is true, mark the step as finished and valid:
-        if (valid) {
+        if (valid) {*/
             document.getElementsByClassName("step")[currentTab].className += " finish";
-        }
-        return valid; // return the valid status
+   //     }
+        return true; // return the valid status
     }
 
     function fixStepIndicator(n) {
