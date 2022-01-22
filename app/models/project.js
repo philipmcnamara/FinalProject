@@ -3,7 +3,6 @@
 const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
 
-let table = [[],[],[],[],[],[],]
 
 const projectSchema = new Schema({
   title: String,

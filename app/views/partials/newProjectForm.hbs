@@ -87,6 +87,7 @@
 <div class="uk-margin uk-width-auto uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
 <div class="uk-grid uk-grid-stack">
 <form id="regForm" action="/project" method="POST" >
+
     <h1>New Project:</h1>
     <!-- One "tab" for each step in the form: -->
     <div class="tab"><h4>Title</h4>
@@ -104,43 +105,43 @@
     <div class="tab"><h4>Root Causes</h4>
 
         <h5>Man</h5>
-        <p><input placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
-        <p><input placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
-        <p><input placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
+        <p><input value = "test" placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
+        <p><input value = "test" placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
+        <p><input value = "test" placeholder="How might a user create this issue?" oninput="this.className = ''" name="man"></p>
         <h5>Machine</h5>
-        <p><input placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
-        <p><input placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
-        <p><input placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
+        <p><input value = "test" placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
+        <p><input value = "test" placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
+        <p><input value = "test" placeholder="What machines involved might be a cause for concern?" oninput="this.className = ''" name="machine"></p>
         <h5>Method</h5>
-        <p><input placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
-        <p><input placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
-        <p><input placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
+        <p><input value = "test" placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
+        <p><input value = "test" placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
+        <p><input value = "test" placeholder="Would a different approach remove the issue?" oninput="this.className = ''" name="method"></p>
         <h5>Environment</h5>
-        <p><input placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
-        <p><input placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
-        <p><input placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
+        <p><input value = "test" placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
+        <p><input value = "test" placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
+        <p><input value = "test" placeholder="Is there an issue with our set up?" oninput="this.className = ''" name="environment"></p>
         <h5>Measure</h5>
-        <p><input placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
-        <p><input placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
-        <p><input placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
+        <p><input value = "test" placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
+        <p><input value = "test" placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
+        <p><input value = "test" placeholder="What indicators are present in the issue?" oninput="this.className = ''" name="measurement"></p>
         <h5>Material</h5>
-        <p><input placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
-        <p><input placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
-        <p><input placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
+        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
+        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
+        <p><input value = "test" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="material"></p>
     </div>
 
 
     <div class="tab"><h4>Action Plan</h4>
 
         <body>
-
-        <p><input type="hidden" id="id" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="actionPlan"></p>
+        <!-- takes input and adds it to my variables & also the display table -->
+        <p><input type="hidden" id="id" placeholder="Can material variation or loss cause a negative change?" ></p>
         <h5>Issue:</h5>
-        <p><input id="issue" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="actionPlan"></p>
+        <p><input  id="issue" placeholder="Can material variation or loss cause a negative change?" ></p>
         <h5>Action:</h5>
-        <p><input id="action" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="actionPlan"></p>
+        <p><input id="action" placeholder="Can material variation or loss cause a negative change?" ></p>
         <h5>Who:</h5>
-        <p><input id="who" placeholder="Can material variation or loss cause a negative change?" oninput="this.className = ''" name="actionPlan"></p>
+        <p><input id="who" placeholder="Can material variation or loss cause a negative change?" ></p>
 
         <label for="when">When:</label>
         <input type="date" id="when" name="when"><br/><br/>
@@ -149,35 +150,41 @@
             <option value="Open">Open</option>
             <option value="Closed">Closed</option>
         </select><br/><br/><br/><br/>
-
+        <!-- passes my variables into the submit button -->
+        <p><input type="hidden" id="idRow[]"  name="actionPlan" ></p>
+        <p><input type="hidden" id="issueRow[]"  name="actionPlan" ></p>
+        <p><input type="hidden" id="actionRow[]"  name="actionPlan" ></p>
+        <p><input type="hidden" id="whoRow[]"  name="actionPlan" ></p>
+        <p><input type="hidden" id="whenRow[]"  name="actionPlan" ></p>
+        <p><input type="hidden" id="statusRow[]"  name="actionPlan" ></p>
+        <!-- calls add row function and adds the info the table and stores it in arrays -->
         <button type="button" onclick="addRow()">Add Row</button>
-
         <br/><br/>
-
+        <!-- creates table of values -->
         <table id="actionTable" border="1">
             <tr>
+                <th>ID</th>
                 <th>Issue</th>
                 <th>Action</th>
                 <th>Who</th>
                 <th>When</th>
                 <th>Status</th>
-                <th>ID</th>
             </tr>
             <tr>
+                <td>1</td>
                 <td>bad milk</td>
                 <td>call driver</td>
                 <td>grace</td>
                 <td>16-01-2022</td>
                 <td>Open</td>
-                <td>1</td>
             </tr>
             <tr>
+                <td>2</td>
                 <td>open coffee bags</td>
                 <td>get clothes-pegs</td>
                 <td>philip</td>
                 <td>18-01-2022</td>
                 <td>Closed</td>
-                <td>2</td>
             </tr>
         </table>
         </body>
@@ -205,6 +212,15 @@
 <script>
     let currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
+
+    // global variables for my actionPlan array srt up
+    const idRow = [];
+    const issueRow = [];
+    const actionRow = [];
+    const whoRow = [];
+    const whenRow = [];
+    const statusRow = [];
+    //const allRows = [[idRow], [issueRow], [actionRow], [whoRow], [whenRow],[statusRow]]
 
     function showTab(n) {
         // This function will display the specified tab of the form...
@@ -284,15 +300,15 @@
         x[n].className += " active";
     }
 
-    function addRow()
-    {
-
+    function addRow() {
         // get input values
         let issue = document.getElementById('issue').value;
         let action = document.getElementById('action').value;
         let who = document.getElementById('who').value;
         let when = document.getElementById('when').value;
         let status = document.getElementById('status').value;
+
+        //let allRows = document.getElementById('allRows').value;
 
         // get the html table
         // 0 = the first table
@@ -313,15 +329,28 @@
         let cel6 = newRow.insertCell(5);
 
         // add values to the cells
-        cel1.innerHTML = issue;
-        cel2.innerHTML = action;
-        cel3.innerHTML = who;
-        cel4.innerHTML = when;
-        cel5.innerHTML = status;
-        cel6.innerHTML = id;
+        cel1.innerHTML = id;
+        cel2.innerHTML = issue;
+        cel3.innerHTML = action;
+        cel4.innerHTML = who;
+        cel5.innerHTML = when;
+        cel6.innerHTML = status;
 
-        document.getElementsByTagName('table')[0].submit();
-        return false;
+        // adds values to arrays of themselves
+        idRow.push(id);
+        issueRow.push(issue);
+        actionRow.push(action);
+        whoRow.push(who);
+        whenRow.push(when);
+        statusRow.push(status);
+
+        //adds arrays to id's then passes them back to them html
+        document.getElementById("idRow[]").value=idRow;
+        document.getElementById("issueRow[]").value=issueRow;
+        document.getElementById("actionRow[]").value=actionRow;
+        document.getElementById("whoRow[]").value=whoRow;
+        document.getElementById("whenRow[]").value=whenRow;
+        document.getElementById("statusRow[]").value=statusRow;
     }
 </script>
 
