@@ -24,12 +24,35 @@
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <h4>Root Cause</h4>
-            <input class="uk-input uk-form-large" type="text" name="rootCause" value="{{rootCause}}">
+            <h5>Man</h5>
+            <input class="uk-input uk-form-large" type="text" name="man" value="{{man}}">
+            <h5>Machine</h5>
+            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine}}">
+            <h5>Method</h5>
+            <input class="uk-input uk-form-large" type="text" name="method" value="{{method}}">
+            <h5>Environment</h5>
+            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment}}">
+            <h5>Measurement</h5>
+            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement}}">
+            <h5>Material</h5>
+            <input class="uk-input uk-form-large" type="text" name="material" value="{{material}}">
         </div>
+
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <h4>Action Plan</h4>
-            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan}}">
+            <h5>ID</h5>
+            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[0]}}">
+            <h5>Issue</h5>
+            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[1]}}">
+            <h5>Action</h5>
+            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[2]}}">
+            <h5>Who</h5>
+            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[3]}}">
+            <h5>When</h5>
+            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[4]}}">
+            <h5>Status</h5>
+            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[5]}}">
         </div>
         <div class="uk-margin">
             <div class="uk-inline uk-width-1-1">
@@ -65,10 +88,15 @@
             <input class="uk-input uk-textarea uk-hidden" type="text" name="background" value="{{background}}">
         </div>
         <input type="hidden" value="{{id}}" name="id"/>
-    <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: empty"></span>
-        <input class="uk-input uk-form-large uk-hidden" type="text" name="rootCause" value="{{rootCause}}">
-    </div>
+        <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon" uk-icon="icon: empty"></span>
+            <input class="uk-input uk-form-large uk-hidden" type="text" name="man" value="{{man}}">
+            <input class="uk-input uk-form-large uk-hidden"type="text" name="machine" value="{{machine}}">
+            <input class="uk-input uk-form-large uk-hidden" type="text" name="method" value="{{method}}">
+            <input class="uk-input uk-form-large uk-hidden" type="text" name="environment" value="{{environment}}">
+            <input class="uk-input uk-form-large uk-hidden" type="text" name="measurement" value="{{measurement}}">
+            <input class="uk-input uk-form-large uk-hidden" type="text" name="material" value="{{material}}">
+        </div>
     <div class="uk-inline uk-width-1-1">
         <span class="uk-form-icon" uk-icon="icon: empty"></span>
         <input class="uk-input uk-form-large uk-hidden" type="text" name="actionPlan" value="{{actionPlan}}">

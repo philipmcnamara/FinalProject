@@ -12,12 +12,12 @@ const projectSchema = new Schema({
   },
   problemDefinition: String,
   goals: String,
-  man: [],
+  man:[],
   machine: [],
-  method : [],
-  environment : [],
-  measurement : [],
-  material : [],
+  method: [],
+  environment: [],
+  measurement: [],
+  material: [],
   actionPlan: []
 
   //status: Boolean,

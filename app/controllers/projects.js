@@ -75,7 +75,6 @@ const Projects = {
       failAction: function (request, h, error) {
         return h
           .view("displayProject", {
-            title: "Sign up error",
             errors: error.details,
           })
           .takeover()
@@ -94,8 +93,13 @@ const Projects = {
         const goals = project.goals;
         const rootCause = project.rootCause;
         const man = project.man;
+        const method = project.method;
+        const machine = project.machine;
+        const environment = project.environment;
+        const measurement = project.measurement;
+        const material = project.material;
         const actionPlan = project.actionPlan;
-        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause, man: man,  actionPlan: actionPlan});
+        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material,  actionPlan: actionPlan});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
@@ -110,7 +114,12 @@ const Projects = {
         problemDefinition: Joi.string().required(),
         goals: Joi.string().required(),
         id: Joi.string().required(),
-        rootCause: Joi.string().required(),
+        man: Joi.string().required(),
+        machine: Joi.string().required(),
+        method : Joi.string().required(),
+        environment : Joi.string().required(),
+        measurement : Joi.string().required(),
+        material : Joi.string().required(),
         actionPlan: Joi.string().required(),
       },
       options: {
@@ -133,7 +142,12 @@ const Projects = {
         const background = collection.background;
         const problemDefinition = collection.problemDefinition;
         const goals = collection.goals;
-        const rootCause = collection.rootCause;
+        const man = collection.man;
+        const machine = collection.machine;
+        const method = collection.method;
+        const environment = collection.environment;
+        const measurement = collection.measurement;
+        const material = collection.material;
         const actionPlan = collection.actionPlan;
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
@@ -141,11 +155,15 @@ const Projects = {
         record.background = background;
         record.problemDefinition = problemDefinition;
         record.goals = goals;
-        record.rootCause = rootCause;
+        record.machine = machine;
+        record.method = method;
+        record.environment = environment
+        record.measurement = measurement;
+        record.material = material;
+        record.man = man;
         record.actionPlan = actionPlan;
         await record.save();
-        return h.view("report", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause,  actionPlan: actionPlan });
-        // return h.redirect("/displayProject",{id:id});
+        return h.view("report", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material, actionPlan: actionPlan });
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
@@ -160,7 +178,12 @@ const Projects = {
         id: Joi.string().required(),
         problemDefinition: Joi.string().required(),
         goals: Joi.string().required(),
-        rootCause: Joi.string().required(),
+        man: Joi.string().required(),
+        machine: Joi.string().required(),
+        method : Joi.string().required(),
+        environment : Joi.string().required(),
+        measurement : Joi.string().required(),
+        material : Joi.string().required(),
         actionPlan: Joi.string().required(),
       },
       options: {
@@ -169,7 +192,6 @@ const Projects = {
       failAction: function (request, h, error) {
         return h
           .view("displayProject", {
-            title: "Sign up error",
             errors: error.details,
           })
           .takeover()
@@ -184,7 +206,12 @@ const Projects = {
         const background = collection.background;
         const problemDefinition = collection.problemDefinition;
         const goals = collection.goals;
-        const rootCause = collection.rootCause;
+        const man = collection.man;
+        const machine = collection.machine;
+        const method = collection.method;
+        const environment = collection.environment;
+        const measurement = collection.measurement;
+        const material = collection.material;
         const actionPlan = collection.actionPlan;
         console.log("test Project update "+id);
         const record = await Project.findById(id);
@@ -192,7 +219,7 @@ const Projects = {
         record.title = title;
         record.background = background;
         await record.delete();
-        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals , rootCause: rootCause,  actionPlan: actionPlan });
+        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals , man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material,  actionPlan: actionPlan });
       } catch (err) {
         return h.view("home", { errors: [{ message: err.message }] });
       }
