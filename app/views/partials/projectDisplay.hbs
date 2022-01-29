@@ -26,34 +26,52 @@
             <h4>Root Cause</h4>
             <h5>Man</h5>
             <input class="uk-input uk-form-large" type="text" name="man" value="{{man}}">
+
             <h5>Machine</h5>
-            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine}}">
+            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine.[0]}}">
+            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine.[1]}}">
+            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine.[2]}}">
             <h5>Method</h5>
-            <input class="uk-input uk-form-large" type="text" name="method" value="{{method}}">
+            <input class="uk-input uk-form-large" type="text" name="method" value="{{method.[0]}}">
+            <input class="uk-input uk-form-large" type="text" name="method" value="{{method.[1]}}">
+            <input class="uk-input uk-form-large" type="text" name="method" value="{{method.[2]}}">
             <h5>Environment</h5>
-            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment}}">
+            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment.[0]}}">
+            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment.[1]}}">
+            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment.[2]}}">
             <h5>Measurement</h5>
-            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement}}">
+            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement.[0]}}">
+            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement.[1]}}">
+            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement.[2]}}">
             <h5>Material</h5>
-            <input class="uk-input uk-form-large" type="text" name="material" value="{{material}}">
+            <input class="uk-input uk-form-large" type="text" name="material" value="{{material.[0]}}">
+            <input class="uk-input uk-form-large" type="text" name="material" value="{{material.[1]}}">
+            <input class="uk-input uk-form-large" type="text" name="material" value="{{material.[2]}}">
         </div>
 
         <div class="uk-inline uk-width-1-1">
-            <span class="uk-form-icon" uk-icon="icon: empty"></span>
-            <h4>Action Plan</h4>
-            <h5>ID</h5>
-            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[0]}}">
-            <h5>Issue</h5>
-            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[1]}}">
-            <h5>Action</h5>
-            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[2]}}">
-            <h5>Who</h5>
-            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[3]}}">
-            <h5>When</h5>
-            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[4]}}">
-            <h5>Status</h5>
-            <input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{actionPlan.[5]}}">
+            <br><br>
+
+        <table id="actionTable" border="1"  >
+            <tr>
+                <th>ID</th>
+                <th>Issue</th>
+                <th>Action</th>
+                <th>Who</th>
+                <th>When</th>
+                <th>Status</th>
+            </tr>
+            {{#each splitActionPlan}}
+                <tr>
+                    {{#each this}}
+                    <td><input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{this}}"></td>
+                    {{log @index}}
+                    {{/each}}
+                </tr>
+            {{/each}}
+        </table>
         </div>
+
         <div class="uk-margin">
             <div class="uk-inline uk-width-1-1">
                 <span class="uk-form-icon" uk-icon="icon: update"></span>
@@ -102,6 +120,6 @@
         <input class="uk-input uk-form-large uk-hidden" type="text" name="actionPlan" value="{{actionPlan}}">
     </div>
     </div>
-
 </form>
+
 {{> error }}

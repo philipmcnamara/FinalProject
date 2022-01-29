@@ -152,13 +152,7 @@
             <option value="Closed">Closed</option>
         </select><br/><br/><br/><br/>
         <!-- passes my variables into the submit button -->
-        <p><input type="hidden" id="idRow[]"  name="actionPlan" ></p>
-        <p><input type="hidden" id="issueRow[]"  name="actionPlan" ></p>
-        <p><input type="hidden" id="actionRow[]"  name="actionPlan" ></p>
-        <p><input type="hidden" id="whoRow[]"  name="actionPlan" ></p>
-        <p><input type="hidden" id="whenRow[]"  name="actionPlan" ></p>
-        <p><input type="hidden" id="statusRow[]"  name="actionPlan" ></p>
-        <!-- calls add row function and adds the info the table and stores it in arrays -->
+        <p><input type="hidden" id="all"  name="actionPlan" ></p>
         <button type="button" onclick="addRow()">Add Row</button>
         <br/><br/>
         <!-- creates table of values -->
@@ -170,22 +164,6 @@
                 <th>Who</th>
                 <th>When</th>
                 <th>Status</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>bad milk</td>
-                <td>call driver</td>
-                <td>grace</td>
-                <td>16-01-2022</td>
-                <td>Open</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>open coffee bags</td>
-                <td>get clothes-pegs</td>
-                <td>philip</td>
-                <td>18-01-2022</td>
-                <td>Closed</td>
             </tr>
         </table>
         </body>
@@ -221,6 +199,7 @@
     const whoRow = [];
     const whenRow = [];
     const statusRow = [];
+    const all = [];
 
     //const allRows = [[idRow], [issueRow], [actionRow], [whoRow], [whenRow],[statusRow]]
 
@@ -338,21 +317,10 @@
         cel5.innerHTML = when;
         cel6.innerHTML = status;
 
-        // adds values to arrays of themselves
-        idRow.push(id);
-        issueRow.push(issue);
-        actionRow.push(action);
-        whoRow.push(who);
-        whenRow.push(when);
-        statusRow.push(status);
+        all.push(id,issue, action, who, when, status);
 
         //adds arrays to id's then passes them back to them html
-        document.getElementById("idRow[]").value=idRow;
-        document.getElementById("issueRow[]").value=issueRow;
-        document.getElementById("actionRow[]").value=actionRow;
-        document.getElementById("whoRow[]").value=whoRow;
-        document.getElementById("whenRow[]").value=whenRow;
-        document.getElementById("statusRow[]").value=statusRow;
+        document.getElementById("all").value=all;
     }
 </script>
 

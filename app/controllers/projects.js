@@ -22,25 +22,25 @@ const Projects = {
   project: {
     handler: async function (request, h) {
       try {
-      const id = request.auth.credentials.id;
-      const user = await User.findById(id);
-      const data = request.payload;
-      const newProject = new Project({
-        title: data.title,
-        background: data.background,
-        owner: user._id,
-        problemDefinition: data.problemDefinition,
-        goals: data.goals,
-        rootCause: data.rootCause,
-        man: data.man,
-        method: data.method,
-        machine: data.machine,
-        environment: data.environment,
-        measurement: data.measurement,
-        material: data.material,
-        actionPlan: data.actionPlan
-      });
-      await newProject.save();
+        const id = request.auth.credentials.id;
+        const user = await User.findById(id);
+        const data = request.payload;
+        const newProject = new Project({
+          title: data.title,
+          background: data.background,
+          owner: user._id,
+          problemDefinition: data.problemDefinition,
+          goals: data.goals,
+          rootCause: data.rootCause,
+          man: data.man,
+          method: data.method,
+          machine: data.machine,
+          environment: data.environment,
+          measurement: data.measurement,
+          material: data.material,
+          actionPlan: data.actionPlan
+        });
+        await newProject.save();
         return h.redirect("/report");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
@@ -99,9 +99,28 @@ const Projects = {
         const measurement = project.measurement;
         const material = project.material;
         const actionPlan = project.actionPlan;
-        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material,  actionPlan: actionPlan});
+        const actionPlanString = actionPlan.toString()
+        const splitActionPlan = [];
+        let i = 0;
+        const fullArray = actionPlanString.split(',');
+        let counter = 0;
+        // loop through whole array, /6 because there are 6 columns in the table
+        for(i = 0; i < fullArray.length/6; i++)
+        {
+          //clears tempArray every loop so rows get added to the table
+          const tempArray = [];
+          for(var j = 0; j < 6; j++){
+            tempArray[j] = fullArray[counter];
+            console.log("counter  : " + counter);
+            console.log("j  : " + j);
+            counter++;
+          }
+          //add the values to each row on every loop
+          splitActionPlan.push(tempArray);
+        }
+        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material,  splitActionPlan: splitActionPlan});
       } catch (err) {
-        return h.view("main", { errors: [{ message: err.message }] });
+        return h.view("displayProject", { errors: [{ message: err.message }] });
       }
     },
   },
