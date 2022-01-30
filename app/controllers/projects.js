@@ -100,6 +100,7 @@ const Projects = {
         const material = project.material;
         const actionPlan = project.actionPlan;
         const actionPlanString = actionPlan.toString()
+        // the below array is what gets looped through in the display page
         const splitActionPlan = [];
         let i = 0;
         const fullArray = actionPlanString.split(',');
@@ -111,8 +112,8 @@ const Projects = {
           const tempArray = [];
           for(var j = 0; j < 6; j++){
             tempArray[j] = fullArray[counter];
-            console.log("counter  : " + counter);
-            console.log("j  : " + j);
+        //    console.log("counter  : " + counter);
+          //  console.log("j  : " + j);
             counter++;
           }
           //add the values to each row on every loop
@@ -139,7 +140,7 @@ const Projects = {
         environment : Joi.string().required(),
         measurement : Joi.string().required(),
         material : Joi.string().required(),
-        actionPlan: Joi.string().required(),
+        actionPlanString: Joi.string().required(),
       },
       options: {
         abortEarly: false,
@@ -156,6 +157,8 @@ const Projects = {
     handler: async function (request, h) {
       try {
         const collection = request.payload;
+        console.log("Payload : "+JSON.stringify(collection));
+        const deprecated = collection.actionPlan;
         const id = collection.id
         const title = collection.title;
         const background = collection.background;
@@ -167,7 +170,8 @@ const Projects = {
         const environment = collection.environment;
         const measurement = collection.measurement;
         const material = collection.material;
-        const actionPlan = collection.actionPlan;
+        // actionPlan set up to link in to a string that's been set up in the payload
+        const actionPlan = collection.actionPlanString;
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
         record.title = title;
@@ -182,7 +186,7 @@ const Projects = {
         record.man = man;
         record.actionPlan = actionPlan;
         await record.save();
-        return h.view("report", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material, actionPlan: actionPlan });
+        return h.view("report", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material, actionPlan: actionPlan});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
@@ -203,7 +207,6 @@ const Projects = {
         environment : Joi.string().required(),
         measurement : Joi.string().required(),
         material : Joi.string().required(),
-        actionPlan: Joi.string().required(),
       },
       options: {
         abortEarly: false,
@@ -231,14 +234,13 @@ const Projects = {
         const environment = collection.environment;
         const measurement = collection.measurement;
         const material = collection.material;
-        const actionPlan = collection.actionPlan;
         console.log("test Project update "+id);
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
         record.title = title;
         record.background = background;
         await record.delete();
-        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals , man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material,  actionPlan: actionPlan });
+        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals , man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material });
       } catch (err) {
         return h.view("home", { errors: [{ message: err.message }] });
       }

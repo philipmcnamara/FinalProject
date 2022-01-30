@@ -1,4 +1,4 @@
-<form action="/displayUpdatedProject" method="POST">
+<form id ="updateProject" name="updateProject" action="/displayUpdatedProject" method="POST">
     <div class="uk-margin">
         <div class="uk-width-expand">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
@@ -26,32 +26,25 @@
             <h4>Root Cause</h4>
             <h5>Man</h5>
             <input class="uk-input uk-form-large" type="text" name="man" value="{{man}}">
-
             <h5>Machine</h5>
-            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine.[0]}}">
-            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine.[1]}}">
-            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine.[2]}}">
+            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine}}">
             <h5>Method</h5>
-            <input class="uk-input uk-form-large" type="text" name="method" value="{{method.[0]}}">
-            <input class="uk-input uk-form-large" type="text" name="method" value="{{method.[1]}}">
-            <input class="uk-input uk-form-large" type="text" name="method" value="{{method.[2]}}">
+            <input class="uk-input uk-form-large" type="text" name="method" value="{{method}}">
             <h5>Environment</h5>
-            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment.[0]}}">
-            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment.[1]}}">
-            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment.[2]}}">
+            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment}}">
             <h5>Measurement</h5>
-            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement.[0]}}">
-            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement.[1]}}">
-            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement.[2]}}">
+            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement}}">
             <h5>Material</h5>
-            <input class="uk-input uk-form-large" type="text" name="material" value="{{material.[0]}}">
-            <input class="uk-input uk-form-large" type="text" name="material" value="{{material.[1]}}">
-            <input class="uk-input uk-form-large" type="text" name="material" value="{{material.[2]}}">
+            <input class="uk-input uk-form-large" type="text" name="material" value="{{material}}">
+            <!-- the below hidden field takes the actionPlan in sting form and receives the ActionPlanArray value from the methods below -->
+            <input id="actionPlanString" type="hidden" name="actionPlanString">
         </div>
-
-        <div class="uk-inline uk-width-1-1">
-            <br><br>
-
+    </div>
+</form>
+<form>
+    <!-- this new form loops through the splitActionPlan as defined in the Projecy controller and adds the values to a Table-->
+    <div class="uk-inline uk-width-1-1">
+        <br><br>
         <table id="actionTable" border="1"  >
             <tr>
                 <th>ID</th>
@@ -64,20 +57,20 @@
             {{#each splitActionPlan}}
                 <tr>
                     {{#each this}}
-                    <td><input class="uk-input uk-form-large" type="text" name="actionPlan" value="{{this}}"></td>
-                    {{log @index}}
+                        <td><input name="actionPlan" class="uk-input uk-form-large" type="text" value="{{this}}"></td>
+                        {{log @index}}
                     {{/each}}
                 </tr>
             {{/each}}
         </table>
-        </div>
-
-        <div class="uk-margin">
-            <div class="uk-inline uk-width-1-1">
-                <span class="uk-form-icon" uk-icon="icon: update"></span>
-                <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-3 uk-align-center">Update Project</button>
-                <br>
-            </div>
+    </div>
+</form>
+<form>
+    <div class="uk-margin">
+        <div class="uk-width-expand">
+            <span class="uk-form-icon" uk-icon="icon: update"></span>
+            <!-- this button calls the submitForm-->
+            <button type="button" class="uk-button uk-button-primary uk-button-large uk-width-1-3 uk-align-center" onclick="submitForm()">Update Project</button>
         </div>
     </div>
 </form>
@@ -109,17 +102,33 @@
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <input class="uk-input uk-form-large uk-hidden" type="text" name="man" value="{{man}}">
-            <input class="uk-input uk-form-large uk-hidden"type="text" name="machine" value="{{machine}}">
+            <input class="uk-input uk-form-large uk-hidden" type="text" name="machine" value="{{machine}}">
             <input class="uk-input uk-form-large uk-hidden" type="text" name="method" value="{{method}}">
             <input class="uk-input uk-form-large uk-hidden" type="text" name="environment" value="{{environment}}">
             <input class="uk-input uk-form-large uk-hidden" type="text" name="measurement" value="{{measurement}}">
             <input class="uk-input uk-form-large uk-hidden" type="text" name="material" value="{{material}}">
         </div>
-    <div class="uk-inline uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: empty"></span>
-        <input class="uk-input uk-form-large uk-hidden" type="text" name="actionPlan" value="{{actionPlan}}">
-    </div>
     </div>
 </form>
-
 {{> error }}
+
+<script type="text/javascript">
+
+    function stringifyActionPlan() {
+        let actionPlanArray = [];
+        // calls actionPlan array
+        let input = document.getElementsByName("actionPlan");
+        // loops through actionPLan and captures the values into the new actionPlanArray
+        for (let i = 0; i < input.length; i ++) {
+            actionPlanArray.push(input[i].value);
+        }
+        // sends the new actionPlanArray value up into the Form to be submitted into the db
+        document.getElementById("actionPlanString").value = actionPlanArray;
+    }
+    function submitForm() {
+      // calls the above function which converts ActionPlan into a new array of Strings called actionPlanString
+        stringifyActionPlan();
+        // Submits the form once the conversion into a readable format is established
+        document.getElementById("updateProject").submit();
+    }
+</script>
