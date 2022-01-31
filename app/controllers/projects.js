@@ -99,11 +99,31 @@ const Projects = {
         const measurement = project.measurement;
         const material = project.material;
         const actionPlan = project.actionPlan;
+        //set all my fields to strings
         const actionPlanString = actionPlan.toString()
+        const manString = man.toString()
+        const methodString = method.toString()
+        const machineString = machine.toString()
+        const environmentString = environment.toString()
+        const measurementString = measurement.toString()
+        const materialString = material.toString()
         // the below array is what gets looped through in the display page
         const splitActionPlan = [];
-        let i = 0;
+        const splitMan = [];
+        const splitMethod = [];
+        const splitMachine = [];
+        const splitEnvironment = [];
+        const splitMeasurement = [];
+        const splitMaterial = [];
+        //these are the stings now split out for looping
+        const fullManArray = manString.split(',');
+        const fullMethodArray = methodString.split(',');
+        const fullMachineArray = machineString.split(',');
+        const fullEnvironmentArray = environmentString.split(',');
+        const fullMeasurementArray = measurementString.split(',');
+        const fullMaterialArray = materialString.split(',');
         const fullArray = actionPlanString.split(',');
+        let i = 0;
         let counter = 0;
         // loop through whole array, /6 because there are 6 columns in the table
         for(i = 0; i < fullArray.length/6; i++)
@@ -119,7 +139,85 @@ const Projects = {
           //add the values to each row on every loop
           splitActionPlan.push(tempArray);
         }
-        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material,  splitActionPlan: splitActionPlan});
+        //man array
+        counter = 0;
+        for(i = 0; i < 3; i++)
+        {
+          //clears tempArray every loop
+          const tempArray = [];
+          for(var j = 0; j < 1; j++){
+            tempArray[j] = fullManArray[counter];
+            counter++;
+          }
+          //add the values to each row on every loop
+          splitMan.push(tempArray);
+        }
+        //method array
+        counter = 0;
+        for(i = 0; i < 3; i++)
+        {
+          //clears tempArray every loop
+          const tempArray = [];
+          for(var j = 0; j < 1; j++){
+            tempArray[j] = fullMethodArray[counter];
+            counter++;
+          }
+          //add the values to each row on every loop
+          splitMethod.push(tempArray);
+        }
+        //Machine array
+        counter = 0;
+        for(i = 0; i < 3; i++)
+        {
+          //clears tempArray every loop
+          const tempArray = [];
+          for(var j = 0; j < 1; j++){
+            tempArray[j] = fullMachineArray[counter];
+            counter++;
+          }
+          //add the values to each row on every loop
+          splitMachine.push(tempArray);
+        }
+        //Enviro array
+        counter = 0;
+        for(i = 0; i < 3; i++)
+        {
+          //clears tempArray every loop
+          const tempArray = [];
+          for(var j = 0; j < 1; j++){
+            tempArray[j] = fullEnvironmentArray[counter];
+            counter++;
+          }
+          //add the values to each row on every loop
+          splitEnvironment.push(tempArray);
+        }
+        //Measurement array
+        counter = 0;
+        for(i = 0; i < 3; i++)
+        {
+          //clears tempArray every loop
+          const tempArray = [];
+          for(var j = 0; j < 1; j++){
+            tempArray[j] = fullMeasurementArray[counter];
+            counter++;
+          }
+          //add the values to each row on every loop
+          splitMeasurement.push(tempArray);
+        }
+        //material array
+        counter = 0;
+        for(i = 0; i < 3; i++)
+        {
+          //clears tempArray every loop
+          const tempArray = [];
+          for(var j = 0; j < 1; j++){
+            tempArray[j] = fullMaterialArray[counter];
+            counter++;
+          }
+          //add the values to each row on every loop
+          splitMaterial.push(tempArray);
+        }
+        return h.view("displayProject", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, rootCause: rootCause, splitMan: splitMan, splitMachine: splitMachine, splitMethod: splitMethod,splitEnvironment: splitEnvironment,  splitMeasurement: splitMeasurement,  splitMaterial: splitMaterial,  splitActionPlan: splitActionPlan});
       } catch (err) {
         return h.view("displayProject", { errors: [{ message: err.message }] });
       }
@@ -134,12 +232,12 @@ const Projects = {
         problemDefinition: Joi.string().required(),
         goals: Joi.string().required(),
         id: Joi.string().required(),
-        man: Joi.string().required(),
-        machine: Joi.string().required(),
-        method : Joi.string().required(),
-        environment : Joi.string().required(),
-        measurement : Joi.string().required(),
-        material : Joi.string().required(),
+        manString: Joi.string().required(),
+        machineString: Joi.string().required(),
+        methodString : Joi.string().required(),
+        environmentString : Joi.string().required(),
+        measurementString : Joi.string().required(),
+        materialString : Joi.string().required(),
         actionPlanString: Joi.string().required(),
       },
       options: {
@@ -158,19 +256,17 @@ const Projects = {
       try {
         const collection = request.payload;
         console.log("Payload : "+JSON.stringify(collection));
-        const deprecated = collection.actionPlan;
         const id = collection.id
         const title = collection.title;
         const background = collection.background;
         const problemDefinition = collection.problemDefinition;
         const goals = collection.goals;
-        const man = collection.man;
-        const machine = collection.machine;
-        const method = collection.method;
-        const environment = collection.environment;
-        const measurement = collection.measurement;
-        const material = collection.material;
-        // actionPlan set up to link in to a string that's been set up in the payload
+        const man = collection.manString;
+        const machine = collection.machineString;
+        const method = collection.methodString;
+        const environment = collection.environmentString;
+        const measurement = collection.measurementString;
+        const material = collection.materialString;
         const actionPlan = collection.actionPlanString;
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
@@ -186,7 +282,7 @@ const Projects = {
         record.man = man;
         record.actionPlan = actionPlan;
         await record.save();
-        return h.view("report", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material, actionPlan: actionPlan});
+        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals, man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material, actionPlan: actionPlan});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
@@ -201,12 +297,6 @@ const Projects = {
         id: Joi.string().required(),
         problemDefinition: Joi.string().required(),
         goals: Joi.string().required(),
-        man: Joi.string().required(),
-        machine: Joi.string().required(),
-        method : Joi.string().required(),
-        environment : Joi.string().required(),
-        measurement : Joi.string().required(),
-        material : Joi.string().required(),
       },
       options: {
         abortEarly: false,
@@ -228,19 +318,13 @@ const Projects = {
         const background = collection.background;
         const problemDefinition = collection.problemDefinition;
         const goals = collection.goals;
-        const man = collection.man;
-        const machine = collection.machine;
-        const method = collection.method;
-        const environment = collection.environment;
-        const measurement = collection.measurement;
-        const material = collection.material;
         console.log("test Project update "+id);
         const record = await Project.findById(id);
         console.log("Title: "+collection.title);
         record.title = title;
         record.background = background;
         await record.delete();
-        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals , man: man, machine: machine, method: method,environment: environment,  measurement: measurement,  material: material });
+        return h.view("home", { title: title, id: id, background: background, problemDefinition: problemDefinition, goals: goals });
       } catch (err) {
         return h.view("home", { errors: [{ message: err.message }] });
       }

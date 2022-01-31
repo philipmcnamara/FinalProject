@@ -23,25 +23,76 @@
         </div>
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
-            <h4>Root Cause</h4>
-            <h5>Man</h5>
-            <input class="uk-input uk-form-large" type="text" name="man" value="{{man}}">
-            <h5>Machine</h5>
-            <input class="uk-input uk-form-large" type="text" name="machine" value="{{machine}}">
-            <h5>Method</h5>
-            <input class="uk-input uk-form-large" type="text" name="method" value="{{method}}">
-            <h5>Environment</h5>
-            <input class="uk-input uk-form-large" type="text" name="environment" value="{{environment}}">
-            <h5>Measurement</h5>
-            <input class="uk-input uk-form-large" type="text" name="measurement" value="{{measurement}}">
-            <h5>Material</h5>
-            <input class="uk-input uk-form-large" type="text" name="material" value="{{material}}">
-            <!-- the below hidden field takes the actionPlan in sting form and receives the ActionPlanArray value from the methods below -->
+
+            <!-- the below hidden field takes the values in sting form and receives the Arrays value from the methods below -->
             <input id="actionPlanString" type="hidden" name="actionPlanString">
+            <input id="manString" type="hidden" name="manString">
+            <input id="machineString" type="hidden" name="machineString">
+            <input id="methodString" type="hidden" name="methodString">
+            <input id="environmentString" type="hidden" name="environmentString">
+            <input id="measurementString" type="hidden" name="measurementString">
+            <input id="materialString" type="hidden" name="materialString">
         </div>
     </div>
 </form>
 <form>
+
+</form>
+<form>
+    <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: empty"></span>
+        <h4>Root Cause</h4>
+
+        <h5>Man</h5>
+        {{#each splitMan}}
+            {{#each this}}
+                <input name="man" class="uk-input uk-form-large" type="text" value="{{this}}">
+                {{log @index}}
+            {{/each}}
+        {{/each}}
+
+        <h5>Machine</h5>
+        {{#each splitMachine}}
+            {{#each this}}
+                <input name="machine" class="uk-input uk-form-large" type="text" value="{{this}}">
+                {{log @index}}
+            {{/each}}
+        {{/each}}
+
+        <h5>Method</h5>
+        {{#each splitMethod}}
+            {{#each this}}
+                <input name="method" class="uk-input uk-form-large" type="text" value="{{this}}">
+                {{log @index}}
+            {{/each}}
+        {{/each}}
+
+        <h5>Environment</h5>
+        {{#each splitEnvironment}}
+            {{#each this}}
+                <input name="environment" class="uk-input uk-form-large" type="text" value="{{this}}">
+                {{log @index}}
+            {{/each}}
+        {{/each}}
+
+        <h5>Measurement</h5>
+        {{#each splitMeasurement}}
+            {{#each this}}
+                <input name="measurement" class="uk-input uk-form-large" type="text" value="{{this}}">
+                {{log @index}}
+            {{/each}}
+        {{/each}}
+
+        <h5>Material</h5>
+        {{#each splitMaterial}}
+            {{#each this}}
+                <input name="material" class="uk-input uk-form-large" type="text" value="{{this}}">
+                {{log @index}}
+            {{/each}}
+        {{/each}}
+
+        <h4>Action Plan</h4>
+    </div>
     <!-- this new form loops through the splitActionPlan as defined in the Projecy controller and adds the values to a Table-->
     <div class="uk-inline uk-width-1-1">
         <br><br>
@@ -101,7 +152,7 @@
         <input type="hidden" value="{{id}}" name="id"/>
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
-            <input class="uk-input uk-form-large uk-hidden" type="text" name="man" value="{{man}}">
+
             <input class="uk-input uk-form-large uk-hidden" type="text" name="machine" value="{{machine}}">
             <input class="uk-input uk-form-large uk-hidden" type="text" name="method" value="{{method}}">
             <input class="uk-input uk-form-large uk-hidden" type="text" name="environment" value="{{environment}}">
@@ -125,9 +176,63 @@
         // sends the new actionPlanArray value up into the Form to be submitted into the db
         document.getElementById("actionPlanString").value = actionPlanArray;
     }
+    function stringifyMan() {
+        let manArray = [];
+        let input = document.getElementsByName("man");
+        for (let i = 0; i < input.length; i ++) {
+            manArray.push(input[i].value);
+        }
+        document.getElementById("manString").value = manArray;
+    }
+    function stringifyMachine() {
+        let machineArray = [];
+        let input = document.getElementsByName("machine");
+        for (let i = 0; i < input.length; i ++) {
+            machineArray.push(input[i].value);
+        }
+        document.getElementById("machineString").value = machineArray;
+    }
+    function stringifyMethod() {
+        let methodArray = [];
+        let input = document.getElementsByName("method");
+        for (let i = 0; i < input.length; i ++) {
+            methodArray.push(input[i].value);
+        }
+        document.getElementById("methodString").value = methodArray;
+    }
+    function stringifyEnvironment() {
+        let environmentArray = [];
+        let input = document.getElementsByName("environment");
+        for (let i = 0; i < input.length; i ++) {
+            environmentArray.push(input[i].value);
+        }
+        document.getElementById("environmentString").value = environmentArray;
+    }
+    function stringifyMeasurement() {
+        let measurementArray = [];
+        let input = document.getElementsByName("measurement");
+        for (let i = 0; i < input.length; i ++) {
+            measurementArray.push(input[i].value);
+        }
+        document.getElementById("measurementString").value = measurementArray;
+    }
+    function stringifyMaterial() {
+        let materialArray = [];
+        let input = document.getElementsByName("material");
+        for (let i = 0; i < input.length; i ++) {
+            materialArray.push(input[i].value);
+        }
+        document.getElementById("materialString").value = materialArray;
+    }
     function submitForm() {
       // calls the above function which converts ActionPlan into a new array of Strings called actionPlanString
         stringifyActionPlan();
+        stringifyMan();
+        stringifyMachine();
+        stringifyMethod();
+        stringifyEnvironment();
+        stringifyMeasurement();
+        stringifyMaterial();
         // Submits the form once the conversion into a readable format is established
         document.getElementById("updateProject").submit();
     }
