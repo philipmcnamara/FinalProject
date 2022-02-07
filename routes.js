@@ -12,8 +12,9 @@ module.exports = [
   { method: "POST", path: "/login", config: Accounts.login },
   { method: 'GET', path: '/settings', config: Accounts.showSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
-
+  { method: 'GET', path: '/dashboard', config: Accounts.showDashboard },
   { method: "GET", path: "/home", config: Projects.home },
+
   { method: "POST", path: "/project", config: Projects.project },
   { method: "GET", path: "/report", config: Projects.report },
 
