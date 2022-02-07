@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #f1f1f1;
+    }
+
+    #regForm {
+        background-color: #ffffff;
+        margin: 100px auto;
+        font-family: Raleway;
+        padding: 40px;
+        width: 70%;
+        min-width: 300px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    input {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+        font-family: Raleway;
+        border: 1px solid #aaaaaa;
+    }
+
+    /* Mark input boxes that gets an error on validation: */
+    input.invalid {
+        background-color: #ffdddd;
+    }
+
+    /* Hide all steps by default: */
+    .tab {
+        display: none;
+    }
+
+    button {
+        background-color: #1E87F0;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Raleway;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    #prevBtn {
+        background-color: #1E87F0;
+    }
+
+    /* Make circles that indicate the steps of the form: */
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+
+    .step.active {
+        opacity: 1;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+        background-color: #1E87F0;
+    }
+</style>
+<body>
+
+
+<div class="uk-margin uk-width-auto uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+<div class="uk-grid uk-grid-stack">
+<form id="regForm" action="/project" method="POST" >
+
+    <h1>New Project:</h1>
+    <!-- One "tab" for each step in the form: -->
+    <div class="tab"><h4>Title</h4>
+        <p><input placeholder="Pick a Title for your Project"  name="title"></p>
+        <h4>Background</h4>
+        <p><input placeholder="Why are we talking about it?"  name="background"></p>
+    </div>
+    <div class="tab"><h4>Problem Definition</h4>
+        <p><input placeholder="Where do things stand today/What is the problem?" name="problemDefinition"></p>
+    </div>
+    <div class="tab"><h4>Goals</h4>
+        <p><input placeholder="What specific outcomes are required?"  name="goals"></p>
+    </div>
+
+    <div class="tab"><h4>Root Causes</h4>
+        <h5>Man</h5>
+        <p><input id = "man"  placeholder="How might a user create this issue?"  name="man"></p>
+        <p><input id = "man"  placeholder="How might a user create this issue?"  name="man"></p>
+        <p><input id = "man"  placeholder="How might a user create this issue?"  name="man"></p>
+        <h5>Machine</h5>
+        <p><input  placeholder="What machines involved might be a cause for concern?"  name="machine"></p>
+        <p><input  placeholder="What machines involved might be a cause for concern?"  name="machine"></p>
+        <p><input  placeholder="What machines involved might be a cause for concern?"  name="machine"></p>
+        <h5>Method</h5>
+        <p><input  placeholder="Would a different approach remove the issue?"  name="method"></p>
+        <p><input  placeholder="Would a different approach remove the issue?"  name="method"></p>
+        <p><input  placeholder="Would a different approach remove the issue?"  name="method"></p>
+        <h5>Environment</h5>
+        <p><input  placeholder="Is there an issue with our set up?"  name="environment"></p>
+        <p><input  placeholder="Is there an issue with our set up?"  name="environment"></p>
+        <p><input  placeholder="Is there an issue with our set up?"  name="environment"></p>
+        <h5>Measure</h5>
+        <p><input  placeholder="What indicators are present in the issue?"  name="measurement"></p>
+        <p><input  placeholder="What indicators are present in the issue?"  name="measurement"></p>
+        <p><input  placeholder="What indicators are present in the issue?"  name="measurement"></p>
+        <h5>Material</h5>
+        <p><input  placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
+        <p><input  placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
+        <p><input  placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
+    </div>
+
+
+    <div class="tab"><h4>Action Plan</h4>
+
+        <body>
+        <!-- takes input and adds it to my variables & also the display table -->
+        <p><input type="hidden" id="id" placeholder="Can material variation or loss cause a negative change?" ></p>
+        <h5>Issue:</h5>
+        <p><input required id="issue" placeholder="Can material variation or loss cause a negative change?" ></p>
+        <h5>Action:</h5>
+        <p><input required id="action" placeholder="Can material variation or loss cause a negative change?" ></p>
+        <h5>Who:</h5>
+        <p><input required id="who" placeholder="Can material variation or loss cause a negative change?" ></p>
+
+        <label for="when">When:</label>
+        <input required type="date" id="when" name="when"><br/><br/>
+        <label for="status">Action Status:</label>
+        <select name="status" id="status">
+            <option value="Open">Open</option>
+            <option value="Closed">Closed</option>
+        </select><br/><br/><br/><br/>
+        <!-- passes my variables into the submit button -->
+        <p><input type="hidden" id="all"  name="actionPlan" ></p>
+        <button type="button" onclick="addRow()">Add Row</button>
+        <br/><br/>
+        <!-- creates table of values -->
+        <table id="actionTable" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Issue</th>
+                <th>Action</th>
+                <th>Who</th>
+                <th>When</th>
+                <th>Status</th>
+            </tr>
+        </table>
+        </body>
+    </div>
+
+    <div style="overflow:auto;">
+        <div style="float:right;">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            <button type="submit" id="submit" onclick="myFunction(-1)">Submit</button>
+        </div>
+    </div>
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+    </div>
+</form>
+</div>
+</div>
+
+<script>
+    let currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    // global variables for my actionPlan array srt up
+    const idRow = [];
+    const issueRow = [];
+    const actionRow = [];
+    const whoRow = [];
+    const whenRow = [];
+    const statusRow = [];
+    const all = [];
+
+    //const allRows = [[idRow], [issueRow], [actionRow], [whoRow], [whenRow],[statusRow]]
+
+    function showTab(n) {
+        // This function will display the specified tab of the form...
+        let x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        //... and fix the Previous/Next buttons:
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+            document.getElementById("submit").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n == (x.length - 1)) {
+            document.getElementById("submit").style.display = "inline";
+            document.getElementById("submit").innerHTML = "Submit";
+            document.getElementById("nextBtn").style.display = "none";
+            document.getElementById("nextBtn").innerHTML = "Next";
+        }
+        //... and run a function that will display the correct step indicator:
+        fixStepIndicator(n)
+    }
+
+    // what happen when the submitt button is clicked
+    function myFunction() {
+        document.getElementById("regForm").submit();
+        alert("The Project was submitted");
+    }
+
+    function nextPrev(n) {
+        // This function will figure out which tab to display
+        let x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateForm()) return false;
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form...
+        if (currentTab >= x.length) {
+            // ... the form gets submitted:
+            myFunction();
+            return false;
+        }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+    }
+
+    function validateForm() {
+        // This function deals with validation of the form fields
+      /*  let x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+        y = x[currentTab].getElementsByTagName("input");
+        // A loop that checks every input field in the current tab:
+        for (i = 0; i < y.length; i++) {
+            // If a field is empty...
+            if (y[i].value == "") {
+                // add an "invalid" class to the field:
+                y[i].className += " invalid";
+                // and set the current valid status to false
+                valid = false;
+            }
+        }
+        // If the valid status is true, mark the step as finished and valid:
+        if (valid) {*/
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+   //     }
+        return true; // return the valid status
+    }
+
+    function fixStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        let i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class on the current step:
+        x[n].className += " active";
+    }
+
+    function addRow() {
+        // get input values
+        let issue = document.getElementById('issue').value;
+        let action = document.getElementById('action').value;
+        let who = document.getElementById('who').value;
+        let when = document.getElementById('when').value;
+        let status = document.getElementById('status').value;
+
+        //let allRows = document.getElementById('allRows').value;
+
+        // get the html table
+        // 0 = the first table
+        let table = document.getElementsByTagName('table')[0];
+        let id = table.rows.length
+
+        // add new empty row to the table
+        // 0 = in the top
+        // table.rows.length = the end
+        let newRow = table.insertRow(table.rows.length);
+
+        // add cells to the row
+        let cel1 = newRow.insertCell(0);
+        let cel2 = newRow.insertCell(1);
+        let cel3 = newRow.insertCell(2);
+        let cel4 = newRow.insertCell(3);
+        let cel5 = newRow.insertCell(4);
+        let cel6 = newRow.insertCell(5);
+
+        // add values to the cells
+        cel1.innerHTML = id;
+        cel2.innerHTML = issue;
+        cel3.innerHTML = action;
+        cel4.innerHTML = who;
+        cel5.innerHTML = when;
+        cel6.innerHTML = status;
+
+        all.push(id,issue, action, who, when, status);
+
+        //adds arrays to id's then passes them back to them html
+        document.getElementById("all").value=all;
+    }
+</script>
+
+</body>
+</html>

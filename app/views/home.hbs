@@ -1,0 +1,26 @@
+<div class="uk-flex uk-flex-center uk-flex-middle uk-grid-small" uk-grid>
+    {{> title-card title="Home" subTitle="View or add a Project"}}
+</div>
+
+<nav class="uk-navbar-container" uk-navbar="dropbar: true; dropbar-mode: push">...</nav>
+<div class="uk-navbar-dropbar">
+    {{> navigation }}
+</div>
+
+<div class="uk-container uk-margin">
+    <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
+        <div class="uk-width-auto@m">
+            <h1 class="uk-heading-small">Lean Manufacturing</h1>
+        </div>
+    </div>
+
+    <div class="uk-container uk-margin">
+        <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
+            <div class="uk-width-auto@m">
+                <img width="100%" src="images/home.jpg" />
+            </div>
+        </div>
+        <br>
+        <div class="uk-width-expand@m">{{> info}}</div>
+    </div>
+</div>
