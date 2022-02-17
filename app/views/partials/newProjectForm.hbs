@@ -31,6 +31,30 @@
         font-family: Raleway;
         border: 1px solid #aaaaaa;
     }
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+    }
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      top: -5px;
+      left: 105%;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
 
     /* Mark input boxes that gets an error on validation: */
     input.invalid {
@@ -90,47 +114,58 @@
 
     <h1>New Project:</h1>
     <!-- One "tab" for each step in the form: -->
-    <div class="tab"><h4>Title</h4>
+    <div class="tab"><h4>Title <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">Pick a Good and Descriptive Title for your project</span>
+    </div></h4>
         <p><input placeholder="Pick a Title for your Project"  name="title"></p>
-        <h4>Background</h4>
+        <h4>Background <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">Tell us where this problem sits, what othjer process are connected to it? How long has it been an issue?</span>
+        </div></h4>
         <p><input placeholder="Why are we talking about it?"  name="background"></p>
     </div>
-    <div class="tab"><h4>Problem Definition</h4>
+    <div class="tab"><h4>Problem Definition <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">Why is this a Problem? WHat knock on effects are there? </span>
+    </div></h4>
         <p><input placeholder="Where do things stand today/What is the problem?" name="problemDefinition"></p>
     </div>
-    <div class="tab"><h4>Goals</h4>
+    <div class="tab"><h4>Goals <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">What do you want to achieve? Be realistic. </span>
+    </div></h4>
         <p><input placeholder="What specific outcomes are required?"  name="goals"></p>
     </div>
 
     <div class="tab"><h4>Root Causes</h4>
-        <h5>Man</h5>
+        <h5>Man <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">Is a person potentially contributing to the issue by the way they are completing other possibly indirect tasks?</span>
+        </div></h5>
         <p><input id = "man"  placeholder="How might a user create this issue?"  name="man"></p>
         <p><input id = "man"  placeholder="How might a user create this issue?"  name="man"></p>
         <p><input id = "man"  placeholder="How might a user create this issue?"  name="man"></p>
-        <h5>Machine</h5>
+        <h5>Machine <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">Machines can be Computers or process as well </span>
+        </div></h5>
         <p><input  placeholder="What machines involved might be a cause for concern?"  name="machine"></p>
         <p><input  placeholder="What machines involved might be a cause for concern?"  name="machine"></p>
         <p><input  placeholder="What machines involved might be a cause for concern?"  name="machine"></p>
-        <h5>Method</h5>
+        <h5>Method <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">Are any of the processes creating or contributing to  the issues? </span>
+        </div></h5>
         <p><input  placeholder="Would a different approach remove the issue?"  name="method"></p>
         <p><input  placeholder="Would a different approach remove the issue?"  name="method"></p>
         <p><input  placeholder="Would a different approach remove the issue?"  name="method"></p>
-        <h5>Environment</h5>
+        <h5>Environment <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">Is the general set up of the entire process causing problems?</span>
+        </div></h5>
         <p><input  placeholder="Is there an issue with our set up?"  name="environment"></p>
         <p><input  placeholder="Is there an issue with our set up?"  name="environment"></p>
         <p><input  placeholder="Is there an issue with our set up?"  name="environment"></p>
-        <h5>Measure</h5>
+        <h5>Measure <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">What metrics could be used to ID the issues? </span>
+        </div></h5>
         <p><input  placeholder="What indicators are present in the issue?"  name="measurement"></p>
         <p><input  placeholder="What indicators are present in the issue?"  name="measurement"></p>
         <p><input  placeholder="What indicators are present in the issue?"  name="measurement"></p>
-        <h5>Material</h5>
+        <h5>Material <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">Would upgrading a PC or adding automation into the process creat improvements? </span>
+        </div></h5>
         <p><input  placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
         <p><input  placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
         <p><input  placeholder="Can material variation or loss cause a negative change?"  name="material"></p>
     </div>
 
 
-    <div class="tab"><h4>Action Plan</h4>
+    <div class="tab"><h4>Action Plan <div class="tooltip"><span uk-icon="info"></span><span class="tooltiptext">What actions can be established that would deal with the issues. Break the roes down and assign people to each task. </span>
+    </div></h4>
 
         <body>
         <!-- takes input and adds it to my variables & also the display table -->
