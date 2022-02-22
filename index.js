@@ -27,8 +27,6 @@ async function init() {
   server.validator(require("@hapi/joi"));
   server.route(require("./routes-api"));
 
-
-
   server.views({
     engines: {
       hbs: require("handlebars"),
