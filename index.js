@@ -10,7 +10,7 @@ require("./app/models/db");
 const env = require("dotenv");
 const dotenv = require("dotenv");
 
-const result = dotenv.config({silent: true});
+const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);
   process.exit(1);
