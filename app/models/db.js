@@ -5,7 +5,6 @@ env.config();
 
 const Mongoose = require("mongoose");
 
-Mongoose.set("useNewUrlParser", false);
 Mongoose.set("useUnifiedTopology", true);
 
 Mongoose.connect(process.env.db);
