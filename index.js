@@ -10,6 +10,7 @@ require("./app/models/db");
 const env = require("dotenv");
 const dotenv = require("dotenv");
 
+
 const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);
@@ -26,6 +27,7 @@ async function init() {
   await server.register(Cookie);
   server.validator(require("@hapi/joi"));
   server.route(require("./routes-api"));
+
 
   server.views({
     engines: {
