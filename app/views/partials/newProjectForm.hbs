@@ -204,7 +204,7 @@
 
     <div style="overflow:auto;">
         <div style="float:right;">
-            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="prevBtn" onclick="Previous(-1)">Previous</button>
             <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
             <button type="submit" id="submit" onclick="myFunction(-1)">Submit</button>
         </div>
@@ -253,7 +253,12 @@
             document.getElementById("nextBtn").style.display = "none";
             document.getElementById("nextBtn").innerHTML = "Next";
         }
-        //... and run a function that will display the correct step indicator:
+        else {
+          document.getElementById("submit").style.display = "none";
+          document.getElementById("submit").innerHTML = "Submit";
+          document.getElementById("nextBtn").style.display = "inline";
+          document.getElementById("nextBtn").innerHTML = "Next";
+        }
         fixStepIndicator(n)
     }
 
@@ -261,6 +266,20 @@
     function myFunction() {
         document.getElementById("regForm").submit();
         alert("The Project was submitted");
+
+    }
+
+    function Previous(n) {
+      // This function will figure out which tab to display
+      let x = document.getElementsByClassName("tab");
+      // Exit the function if any field in the current tab is invalid:
+      if (n == 1 && !validateForm()) return false;
+      // Hide the current tab:
+      x[currentTab].style.display = "none";
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab -1;
+      // Otherwise, display the correct tab:
+      showTab(currentTab);
     }
 
     function nextPrev(n) {
