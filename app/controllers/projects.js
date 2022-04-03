@@ -10,6 +10,11 @@ const Projects = {
       return h.view("home", { title: "Add a Project" });
     },
   },
+  A3: {
+    handler: function (request, h) {
+      return h.view("A3", { title: "A3's" });
+    },
+  },
   report: {
     handler: async function(request, h) {
       const projects = await Project.find().populate("owner").lean();
