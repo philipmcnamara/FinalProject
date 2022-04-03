@@ -15,6 +15,11 @@ const Projects = {
       return h.view("A3", { title: "A3's" });
     },
   },
+  impactMatrix: {
+    handler: function (request, h) {
+      return h.view("impactMatrix", { title: "Impact Matrix" });
+    },
+  },
   report: {
     handler: async function(request, h) {
       const projects = await Project.find().populate("owner").lean();
